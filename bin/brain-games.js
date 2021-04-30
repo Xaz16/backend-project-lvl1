@@ -1,8 +1,8 @@
 #!/usr/bin/env node
-import { askForGreeting } from "../src/cli.js";
+import askForGreeting from '../src/cli.js';
 
 const main = () => {
-  console.log("Welcome to the Brain Games!");
+  console.log('Welcome to the Brain Games!');
 
   askForGreeting();
 };
