@@ -1,10 +1,6 @@
 #!/usr/bin/env node
-import askForGreeting from '../src/cli.js';
-import welcome from '../src/welcome.js';
+import startGame from '../src/index.js';
 
-const main = () => {
-  welcome();
-  askForGreeting();
-};
+const main = () => null;
 
-main();
+startGame(main);
