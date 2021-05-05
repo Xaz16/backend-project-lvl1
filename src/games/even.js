@@ -1,5 +1,5 @@
 import readlineSync from 'readline-sync';
-import randomBetween from './random.js';
+import randomBetween from '../random.js';
 
 export default (roundCount, evenRange = { min: 1, max: 100 }) => {
   const { min, max } = evenRange;

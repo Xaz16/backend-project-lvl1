@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import askForGreeting from '../src/cli.js';
 import welcome from '../src/welcome.js';
-import even from '../src/even.js';
+import even from '../src/games/even.js';
 import config from '../config/even.js';
 
 const main = () => {
