@@ -1,22 +1,14 @@
 import readlineSync from 'readline-sync';
 import randomBetween from '../random.js';
+import prepareSamples from '../prepare-samples.js';
 
 export default (roundCount, operations, calcRange = { min: 1, max: 100 }) => {
-  const { min, max } = calcRange;
   let isLastAnswerCorrect = true;
-  const samples = Array(roundCount)
-    .fill(null)
-    .map(() => [
-      +randomBetween(min, max).toFixed(0),
-      +randomBetween(min, max).toFixed(0),
-    ]);
+  const samples = prepareSamples(roundCount, 2, calcRange);
 
   for (const sample of samples) {
     const operationsKeys = Object.keys(operations);
-    const opertaionKeyIndex = randomBetween(
-      0,
-      operationsKeys.length - 1,
-    ).toFixed(0);
+    const opertaionKeyIndex = randomBetween(0, operationsKeys.length - 1).toFixed(0);
     const opertaionKey = operationsKeys[opertaionKeyIndex];
 
     const currentOperationFn = operations[opertaionKey];
@@ -31,9 +23,7 @@ export default (roundCount, operations, calcRange = { min: 1, max: 100 }) => {
       console.log('Correct!');
     } else {
       isLastAnswerCorrect = false;
-      console.log(
-        `'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`,
-      );
+      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
       break;
     }
   }
