@@ -1,6 +1,7 @@
 import readlineSync from 'readline-sync';
 import randomBetween from '../random.js';
 import prepareSamples from '../prepare-samples.js';
+import checkAnswer from '../check-answer.js';
 
 export default (roundCount, operations, calcRange = { min: 1, max: 100 }) => {
   let isLastAnswerCorrect = true;
@@ -19,13 +20,7 @@ export default (roundCount, operations, calcRange = { min: 1, max: 100 }) => {
       `Question: ${sample.join(` ${opertaionKey} `)}\nYour answer: `,
     );
 
-    if (+answer === correctAnswer) {
-      console.log('Correct!');
-    } else {
-      isLastAnswerCorrect = false;
-      console.log(`'${answer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.`);
-      break;
-    }
+    isLastAnswerCorrect = checkAnswer(+answer, correctAnswer);
   }
 
   return isLastAnswerCorrect;
