@@ -8,6 +8,9 @@ export default (roundCount, gcdRange = { min: 1, max: 100 }) => {
   const samples = prepareSamples(roundCount, 2, gcdRange);
 
   for (const sample of samples) {
+    if (!isLastAnswerCorrect) {
+      break;
+    }
     const correctAnswer = getGcd(...sample);
     const answer = readlineSync.question(`Question: ${sample.join(' ')}\nYour answer: `);
 

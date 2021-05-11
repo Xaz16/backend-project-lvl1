@@ -8,6 +8,9 @@ export default (roundCount, evenRange = { min: 1, max: 100 }) => {
   let isLastAnswerCorrect = true;
 
   for (const number of samples) {
+    if (!isLastAnswerCorrect) {
+      break;
+    }
     const answer = readlineSync.question(`Question: ${number}\nYour answer: `);
     const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
 

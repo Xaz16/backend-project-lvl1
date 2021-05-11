@@ -8,6 +8,9 @@ export default (roundCount, operations, calcRange = { min: 1, max: 100 }) => {
   const samples = prepareSamples(roundCount, 2, calcRange);
 
   for (const sample of samples) {
+    if (!isLastAnswerCorrect) {
+      break;
+    }
     const operationsKeys = Object.keys(operations);
     const opertaionKeyIndex = randomBetween(0, operationsKeys.length - 1).toFixed(0);
     const opertaionKey = operationsKeys[opertaionKeyIndex];
