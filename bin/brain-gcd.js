@@ -5,7 +5,7 @@ import startGame from '../src/index.js';
 
 const main = () => {
   console.log('Find the greatest common divisor of given numbers.');
-  return gcd(config.roundCount, config.range);
+  return gcd(config.roundCount, config.roundLength, config.range);
 };
 
 startGame(main);

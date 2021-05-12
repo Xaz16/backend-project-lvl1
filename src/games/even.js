@@ -2,8 +2,8 @@ import readlineSync from 'readline-sync';
 import checkAnswer from '../check-answer.js';
 import prepareSamples from '../prepare-samples.js';
 
-export default (roundCount, evenRange = { min: 1, max: 100 }) => {
-  const samples = prepareSamples(roundCount, 1, evenRange);
+export default (roundCount, roundLength, evenRange = { min: 1, max: 100 }) => {
+  const samples = prepareSamples(roundCount, roundLength, evenRange);
 
   let isLastAnswerCorrect = true;
 

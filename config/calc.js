@@ -1,5 +1,6 @@
 export default {
   roundCount: 3,
+  roundLength: 2,
   operations: {
     '+': (a, b) => a + b,
     '-': (a, b) => a - b,

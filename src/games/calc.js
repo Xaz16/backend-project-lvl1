@@ -3,16 +3,16 @@ import randomBetween from '../random.js';
 import prepareSamples from '../prepare-samples.js';
 import checkAnswer from '../check-answer.js';
 
-export default (roundCount, operations, calcRange = { min: 1, max: 100 }) => {
+export default (roundCount, roundLength, operations, calcRange = { min: 1, max: 100 }) => {
   let isLastAnswerCorrect = true;
-  const samples = prepareSamples(roundCount, 2, calcRange);
+  const samples = prepareSamples(roundCount, roundLength, calcRange);
 
   for (const sample of samples) {
     if (!isLastAnswerCorrect) {
       break;
     }
     const operationsKeys = Object.keys(operations);
-    const opertaionKeyIndex = randomBetween(0, operationsKeys.length - 1).toFixed(0);
+    const opertaionKeyIndex = randomBetween(0, operationsKeys.length - 1);
     const opertaionKey = operationsKeys[opertaionKeyIndex];
 
     const currentOperationFn = operations[opertaionKey];

@@ -5,7 +5,7 @@ import startGame from '../src/index.js';
 
 const main = () => {
   console.log('What is the result of the expression?');
-  return calc(config.roundCount, config.operations, config.range);
+  return calc(config.roundCount, config.roundLength, config.operations, config.range);
 };
 
 startGame(main);

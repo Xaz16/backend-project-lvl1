@@ -5,7 +5,7 @@ import startGame from '../src/index.js';
 
 const main = () => {
   console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  return even(config.roundCount, config.range);
+  return even(config.roundCount, config.roundLength, config.range);
 };
 
 startGame(main);

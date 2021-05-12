@@ -3,9 +3,9 @@ import checkAnswer from '../check-answer.js';
 import getGcd from '../getGcd.js';
 import prepareSamples from '../prepare-samples.js';
 
-export default (roundCount, gcdRange = { min: 1, max: 100 }) => {
+export default (roundCount, roundLength, gcdRange = { min: 1, max: 100 }) => {
   let isLastAnswerCorrect = true;
-  const samples = prepareSamples(roundCount, 2, gcdRange);
+  const samples = prepareSamples(roundCount, roundLength, gcdRange);
 
   for (const sample of samples) {
     if (!isLastAnswerCorrect) {

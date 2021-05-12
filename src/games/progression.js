@@ -3,11 +3,11 @@ import randomBetween from '../random.js';
 import prepareSamples from '../prepare-samples.js';
 import checkAnswer from '../check-answer.js';
 
-export default (roundCount, progressionRange = { min: 1, max: 10 }) => {
+export default (roundCount, roundLength, progressionRange = { min: 1, max: 10 }) => {
   let isLastAnswerCorrect = true;
 
-  const samples = prepareSamples(roundCount, 10, progressionRange).map((item) => {
-    const baseOfProgression = +randomBetween(1, 10).toFixed(0);
+  const samples = prepareSamples(roundCount, roundLength, progressionRange).map((item) => {
+    const baseOfProgression = randomBetween(progressionRange.min, progressionRange.max);
     return item.map((childItem, childIndex) => baseOfProgression + childIndex * baseOfProgression);
   });
 
@@ -16,7 +16,7 @@ export default (roundCount, progressionRange = { min: 1, max: 10 }) => {
       break;
     }
 
-    const unknownPosition = +randomBetween(0, 9).toFixed(0);
+    const unknownPosition = randomBetween(0, sample.length - 1);
     const correctAnswer = sample[unknownPosition];
     sample[unknownPosition] = '..';
 
