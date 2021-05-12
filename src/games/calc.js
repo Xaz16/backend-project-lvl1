@@ -7,9 +7,9 @@ export default (roundCount, roundLength, operations, calcRange = { min: 1, max: 
   let isLastAnswerCorrect = true;
   const samples = prepareSamples(roundCount, roundLength, calcRange);
 
-  for (const sample of samples) {
+  samples.forEach((sample) => {
     if (!isLastAnswerCorrect) {
-      break;
+      return false;
     }
     const operationsKeys = Object.keys(operations);
     const opertaionKeyIndex = randomBetween(0, operationsKeys.length - 1);
@@ -24,7 +24,8 @@ export default (roundCount, roundLength, operations, calcRange = { min: 1, max: 
     );
 
     isLastAnswerCorrect = checkAnswer(+answer, correctAnswer);
-  }
+    return isLastAnswerCorrect;
+  });
 
   return isLastAnswerCorrect;
 };

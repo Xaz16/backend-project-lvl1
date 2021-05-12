@@ -7,15 +7,17 @@ export default (roundCount, roundLength, gcdRange = { min: 1, max: 100 }) => {
   let isLastAnswerCorrect = true;
   const samples = prepareSamples(roundCount, roundLength, gcdRange);
 
-  for (const sample of samples) {
+  samples.forEach((sample) => {
     if (!isLastAnswerCorrect) {
-      break;
+      return false;
     }
     const correctAnswer = getGcd(...sample);
     const answer = readlineSync.question(`Question: ${sample.join(' ')}\nYour answer: `);
 
     isLastAnswerCorrect = checkAnswer(+answer, correctAnswer);
-  }
+
+    return isLastAnswerCorrect;
+  });
 
   return isLastAnswerCorrect;
 };

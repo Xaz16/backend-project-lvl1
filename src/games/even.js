@@ -7,15 +7,16 @@ export default (roundCount, roundLength, evenRange = { min: 1, max: 100 }) => {
 
   let isLastAnswerCorrect = true;
 
-  for (const number of samples) {
+  samples.forEach((sample) => {
     if (!isLastAnswerCorrect) {
-      break;
+      return false;
     }
-    const answer = readlineSync.question(`Question: ${number}\nYour answer: `);
-    const correctAnswer = number % 2 === 0 ? 'yes' : 'no';
+    const answer = readlineSync.question(`Question: ${sample}\nYour answer: `);
+    const correctAnswer = sample % 2 === 0 ? 'yes' : 'no';
 
     isLastAnswerCorrect = checkAnswer(answer, correctAnswer);
-  }
+    return isLastAnswerCorrect;
+  });
 
   return isLastAnswerCorrect;
 };

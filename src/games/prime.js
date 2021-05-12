@@ -7,16 +7,17 @@ export default (roundCount, roundLength, primeRange = { min: 6, max: 72 }, prime
 
   const samples = prepareSamples(roundCount, roundLength, primeRange);
 
-  for (const sample of samples) {
+  samples.forEach((sample) => {
     if (!isLastAnswerCorrect) {
-      break;
+      return false;
     }
 
     const correctAnswer = primes.indexOf(sample[0]) === -1 ? 'no' : 'yes';
     const answer = readlineSync.question(`Question: ${sample.join(' ')}\nYour answer: `);
 
     isLastAnswerCorrect = checkAnswer(answer, correctAnswer);
-  }
+    return isLastAnswerCorrect;
+  });
 
   return isLastAnswerCorrect;
 };

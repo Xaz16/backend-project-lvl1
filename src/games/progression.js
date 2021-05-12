@@ -11,19 +11,21 @@ export default (roundCount, roundLength, progressionRange = { min: 1, max: 10 })
     return item.map((childItem, childIndex) => baseOfProgression + childIndex * baseOfProgression);
   });
 
-  for (const sample of samples) {
+  samples.forEach((sample) => {
     if (!isLastAnswerCorrect) {
-      break;
+      return false;
     }
 
     const unknownPosition = randomBetween(0, sample.length - 1);
     const correctAnswer = sample[unknownPosition];
-    sample[unknownPosition] = '..';
+    const sampleToShow = [...sample];
+    sampleToShow[unknownPosition] = '..';
 
-    const answer = readlineSync.question(`Question: ${sample.join(' ')}\nYour answer: `);
+    const answer = readlineSync.question(`Question: ${sampleToShow.join(' ')}\nYour answer: `);
 
     isLastAnswerCorrect = checkAnswer(+answer, correctAnswer);
-  }
+    return isLastAnswerCorrect;
+  });
 
   return isLastAnswerCorrect;
 };
