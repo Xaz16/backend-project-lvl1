@@ -5,7 +5,7 @@ import startGame from '../src/index.js';
 
 const main = () => {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
-  return prime(config.roundCount, config.operations, config.range);
+  return prime(config.roundCount, config.range, config.primes);
 };
 
 startGame(main);

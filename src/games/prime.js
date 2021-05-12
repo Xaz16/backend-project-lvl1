@@ -2,10 +2,9 @@ import readlineSync from 'readline-sync';
 import checkAnswer from '../check-answer.js';
 import prepareSamples from '../prepare-samples.js';
 
-export default (roundCount, primeRange = { min: 6, max: 72 }) => {
+export default (roundCount, primeRange = { min: 6, max: 72 }, primes) => {
   let isLastAnswerCorrect = true;
 
-  const primes = [7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71];
   const samples = prepareSamples(roundCount, 1, primeRange);
 
   for (const sample of samples) {
